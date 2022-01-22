@@ -1,0 +1,256 @@
+basePath: /
+definitions:
+  model.Courses:
+    properties:
+      names:
+        items:
+          type: string
+        type: array
+    required:
+    - names
+    type: object
+  model.Groups:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+    required:
+    - name
+    type: object
+  model.ScheduleRow:
+    properties:
+      name:
+        type: string
+      time:
+        type: string
+    type: object
+  model.StudentAddInfo:
+    properties:
+      courses:
+        $ref: '#/definitions/model.Courses'
+      group:
+        $ref: '#/definitions/model.Groups'
+      students:
+        $ref: '#/definitions/model.Students'
+    type: object
+  model.Students:
+    properties:
+      id:
+        type: integer
+      name:
+        type: string
+      username:
+        type: string
+    type: object
+host: localhost:8080
+info:
+  contact: {}
+  description: Simple app to see your schedule.
+  title: schedule-aws
+  version: "1.0"
+paths:
+  /course/all:
+    post:
+      consumes:
+      - application/json
+      description: shows available to choose courses
+      operationId: show-courses
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: ShowCourses
+      tags:
+      - Support
+  /course/participants:
+    post:
+      consumes:
+      - application/json
+      description: shows a particular course participants
+      operationId: show-classmates
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              type: string
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: ShowMyClassmates
+      tags:
+      - Core
+  /student/find:
+    post:
+      consumes:
+      - application/json
+      description: Check whether username exists in db
+      operationId: find-username
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            type: string
+        "400":
+          description: Bad Request
+          schema:
+            type: string
+      summary: FindUsername
+      tags:
+      - Support
+  /student/login:
+    post:
+      consumes:
+      - application/json
+      description: Login handler
+      operationId: login
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+        "500":
+          description: Internal Server Error
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Login
+      tags:
+      - Core
+  /student/logout:
+    post:
+      consumes:
+      - application/json
+      description: Logs out
+      operationId: logout
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+      summary: Logout
+      tags:
+      - Core
+  /student/register:
+    post:
+      consumes:
+      - application/json
+      description: Create/add student
+      operationId: create-account
+      parameters:
+      - description: Student info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/model.StudentAddInfo'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            additionalProperties: true
+            type: object
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+      summary: AddStudent
+      tags:
+      - Core
+  /student/schedule:
+    post:
+      consumes:
+      - application/json
+      description: Give students' schedule
+      operationId: give-schedule
+      parameters:
+      - description: Students' info
+        in: body
+        name: input
+        required: true
+        schema:
+          $ref: '#/definitions/model.Students'
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            items:
+              $ref: '#/definitions/model.ScheduleRow'
+            type: array
+        "400":
+          description: Bad Request
+          schema:
+            additionalProperties: true
+            type: object
+      summary: GiveSchedule
+      tags:
+      - Core
+  /student/user:
+    get:
+      consumes:
+      - application/json
+      description: Gives the current user's data
+      operationId: user
+      produces:
+      - application/json
+      responses:
+        "200":
+          description: OK
+          schema:
+            $ref: '#/definitions/model.Students'
+        "401":
+          description: Unauthorized
+          schema:
+            additionalProperties: true
+            type: object
+        "404":
+          description: Not Found
+          schema:
+            additionalProperties: true
+            type: object
+      summary: User
+      tags:
+      - Core
+securityDefinitions:
+  ApiKeyAuth:
+    in: header
+    name: Authorization
+    type: apiKey
+swagger: "2.0"

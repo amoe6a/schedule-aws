@@ -1,0 +1,9 @@
+.page-header {
+    height: 6rem;
+    display: flex;
+    align-items: center;
+    background: #3a9d92;
+    color: white;
+    padding: 0 2rem;
+
+}

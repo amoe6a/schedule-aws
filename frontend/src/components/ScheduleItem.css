@@ -1,0 +1,9 @@
+.schedule-item {
+    padding: 0.5rem;
+    display: flex;
+    justify-content: space-evenly;
+    background-color: #ffb586;
+    margin-bottom: 0.5rem;
+    border-radius: 10px;
+    color: #396458;
+}
