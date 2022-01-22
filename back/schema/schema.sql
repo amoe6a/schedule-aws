@@ -5,8 +5,6 @@
 -- Dumped from database version 12.7
 -- Dumped by pg_dump version 12.9 (Ubuntu 12.9-0ubuntu0.20.04.1)
 
--- Started on 2021-12-04 23:25:04 +06
-
 SET statement_timeout = 0;
 SET lock_timeout = 0;
 SET idle_in_transaction_session_timeout = 0;
@@ -18,14 +16,14 @@ SET xmloption = content;
 SET client_min_messages = warning;
 SET row_security = off;
 
-DROP DATABASE database_1;
 --
--- TOC entry 3889 (class 1262 OID 16396)
--- Name: database_1; Type: DATABASE; Schema: -; Owner: -
+-- Name: database_1; Type: DATABASE; Schema: -; Owner: postgres
 --
 
 CREATE DATABASE database_1 WITH TEMPLATE = template0 ENCODING = 'UTF8' LC_COLLATE = 'en_US.UTF-8' LC_CTYPE = 'en_US.UTF-8';
 
+
+ALTER DATABASE database_1 OWNER TO postgres;
 
 \connect database_1
 
@@ -41,8 +39,7 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 3890 (class 0 OID 0)
--- Name: database_1; Type: DATABASE PROPERTIES; Schema: -; Owner: -
+-- Name: database_1; Type: DATABASE PROPERTIES; Schema: -; Owner: postgres
 --
 
 ALTER DATABASE database_1 SET search_path TO 'csci341', 'public';
@@ -62,470 +59,271 @@ SET client_min_messages = warning;
 SET row_security = off;
 
 --
--- TOC entry 3 (class 2615 OID 2200)
--- Name: public; Type: SCHEMA; Schema: -; Owner: -
+-- Data for Name: class_time; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-CREATE SCHEMA public;
-
-
-SET default_table_access_method = heap;
-
---
--- TOC entry 217 (class 1259 OID 16628)
--- Name: class_participants; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.class_participants (
-    id_class integer NOT NULL,
-    id_students integer
-);
+COPY public.class_time (name, "time", id) FROM stdin;
+calculus	13:00, M-W-F	1
+chemistry	9:00, M-W-F	2
+geometry	11:30, M-W-F	3
+informatics	10:00 M-W-F	4
+kazakh literature	15:30, T-R	5
+physics	9:00, T-R	6
+biology	12:30, T-R	7
+\.
 
 
 --
--- TOC entry 215 (class 1259 OID 16574)
--- Name: class_time; Type: TABLE; Schema: public; Owner: -
+-- Data for Name: students; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.class_time (
-    name text,
-    "time" text,
-    id integer NOT NULL
-);
-
-
---
--- TOC entry 216 (class 1259 OID 16613)
--- Name: class_time_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.class_time_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- TOC entry 3891 (class 0 OID 0)
--- Dependencies: 216
--- Name: class_time_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.class_time_id_seq OWNED BY public.class_time.id;
-
-
---
--- TOC entry 219 (class 1259 OID 16643)
--- Name: groups; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.groups (
-    id integer NOT NULL,
-    name text NOT NULL
-);
-
-
---
--- TOC entry 218 (class 1259 OID 16641)
--- Name: groups_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.groups_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- TOC entry 3892 (class 0 OID 0)
--- Dependencies: 218
--- Name: groups_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.groups_id_seq OWNED BY public.groups.id;
+COPY public.students (id, name, username, password) FROM stdin;
+1	Marat N	gstrangeways0	\N
+2	Ikarat T	abridat1	\N
+3	Keken	astone2	\N
+4	Duran	sallen3	\N
+5	Kashiwa	jfishpool4	\N
+6	Tokoro	gcaslett5	\N
+7	Fergus Swinn	mphilip6	\N
+8	Lainey Swafford	asitch7	\N
+9	Letti Kimpton	tmcsharry8	\N
+10	Stanton Poel	mmacgilmartin9	\N
+11	Rollin Davidsohn	frawstrona	\N
+12	Estell Parsall	bexpositob	\N
+13	Boyd Counihan	dshevellc	\N
+14	Jannel Shearston	tmackelworthd	\N
+15	Werner Trayford	msamplese	\N
+16	Sonny Chrismas	tchellenhamf	\N
+17	Angelle Jecks	dmccagueg	\N
+18	Ely Wethers	tcritophh	\N
+19	Raymund Menear	lskiplornei	\N
+20	Roxi McIlmurray	candrassyj	\N
+21	Dusty Randell	ktumilityk	\N
+22	Kincaid Gierek	kmoppettl	\N
+23	Abelard Bursnall	cduffetm	\N
+24	Charil Flahy	cchampkinn	\N
+25	Osborne Thoma	amckuneo	\N
+26	Ekaterina Dukesbury	ofullep	\N
+27	Clary Chifney	mwatersonq	\N
+28	Roxi Shenton	sgardnerr	\N
+29	Alexander Corkitt	lpalisers	\N
+30	Amandy Lysaght	bmconiet	\N
+31	Hoyt Von Helmholtz	fmccrainoru	\N
+32	Sergio Slide	lpowersv	\N
+33	Pippa Coulthard	ngristockw	\N
+34	Ali Kopecka	bmacmaykinx	\N
+35	Carlynne Foxton	kpadlyy	\N
+36	Lorelle Rosenfield	flichfieldz	\N
+37	shiroi nami	shironami0	\N
+38	kokorono tokoro	koratora2	\N
+43	l k	kirakira	\N
+45	koch moch	kochmoch	\N
+69	akira ore	kamakira	\N
+70	yagami light	kirawakireta	\N
+72	kazuya kirito	topasuna	\N
+74	myke tyson	boxbox	\N
+75	mike wazovsky	monster	\N
+91	kel thalas	allience	\N
+95	hitomi pupil	hitomi	\N
+96	anshinshite ku	dasai	\N
+97	yoruni ke	kake	\N
+102	john doe	johndoe@mail.com	$2a$06$UptPoefQld2m.j7kxa4AYu0JrdNMVDGLGYpnSIhpYJiTFkqr0JPHS
+108	omae wa	mou	$2a$14$/k5kWT2Zb64PIJLJZaqYnukpAXI5kvn0pvesZjeK.pdbqEjmvMSlS
+110	shiroi nami	shiro	$2a$14$WOrvi6I9gVHr1qRckZkQL.ig04U4fChRWpUmAALR8yuW4LFuNauQm
+\.
 
 
 --
--- TOC entry 220 (class 1259 OID 16652)
--- Name: groups_students; Type: TABLE; Schema: public; Owner: -
+-- Data for Name: class_participants; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-CREATE TABLE public.groups_students (
-    id_groups integer NOT NULL,
-    id_students integer
-);
-
-
---
--- TOC entry 204 (class 1259 OID 16433)
--- Name: students; Type: TABLE; Schema: public; Owner: -
---
-
-CREATE TABLE public.students (
-    id integer NOT NULL,
-    name text NOT NULL,
-    username text NOT NULL
-);
-
-
---
--- TOC entry 203 (class 1259 OID 16431)
--- Name: students_id_seq; Type: SEQUENCE; Schema: public; Owner: -
---
-
-CREATE SEQUENCE public.students_id_seq
-    AS integer
-    START WITH 1
-    INCREMENT BY 1
-    NO MINVALUE
-    NO MAXVALUE
-    CACHE 1;
-
-
---
--- TOC entry 3893 (class 0 OID 0)
--- Dependencies: 203
--- Name: students_id_seq; Type: SEQUENCE OWNED BY; Schema: public; Owner: -
---
-
-ALTER SEQUENCE public.students_id_seq OWNED BY public.students.id;
-
-
---
--- TOC entry 3737 (class 2604 OID 16615)
--- Name: class_time id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.class_time ALTER COLUMN id SET DEFAULT nextval('public.class_time_id_seq'::regclass);
-
-
---
--- TOC entry 3738 (class 2604 OID 16646)
--- Name: groups id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.groups ALTER COLUMN id SET DEFAULT nextval('public.groups_id_seq'::regclass);
-
-
---
--- TOC entry 3736 (class 2604 OID 16436)
--- Name: students id; Type: DEFAULT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.students ALTER COLUMN id SET DEFAULT nextval('public.students_id_seq'::regclass);
-
-
---
--- TOC entry 3880 (class 0 OID 16628)
--- Dependencies: 217
--- Data for Name: class_participants; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO public.class_participants (id_class, id_students) VALUES (4, 23);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (6, 7);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (2, 12);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (2, 27);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (1, 9);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (2, 18);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (3, 30);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (4, 19);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (7, 8);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (5, 5);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (1, 5);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (5, 21);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (5, 24);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (4, 13);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (1, 1);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (5, 17);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (2, 20);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (2, 11);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (1, 23);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (5, 23);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (3, 25);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (3, 8);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (1, 17);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (7, 12);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (1, 16);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (2, 13);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (1, 24);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (2, 2);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (7, 2);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (4, 5);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (4, 33);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (2, 10);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (5, 25);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (6, 30);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (2, 6);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (4, 18);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (6, 8);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (3, 2);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (1, 12);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (6, 2);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (7, 5);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (5, 27);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (5, 33);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (6, 27);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (3, 10);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (5, 13);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (6, 14);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (3, 6);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (4, 20);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (2, 34);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (5, 16);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (7, 29);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (2, 32);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (4, 31);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (3, 20);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (1, 33);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (3, 13);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (6, 3);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (3, 34);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (5, 4);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (3, 18);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (1, 13);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (1, 69);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (3, 69);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (1, 70);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (2, 70);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (1, 72);
-INSERT INTO public.class_participants (id_class, id_students) VALUES (4, 72);
+COPY public.class_participants (id_class, id_students) FROM stdin;
+4	23
+6	7
+2	12
+2	27
+1	9
+2	18
+3	30
+4	19
+7	8
+5	5
+1	5
+5	21
+5	24
+4	13
+1	1
+5	17
+2	20
+2	11
+1	23
+5	23
+3	25
+3	8
+1	17
+7	12
+1	16
+2	13
+1	24
+2	2
+7	2
+4	5
+4	33
+2	10
+5	25
+6	30
+2	6
+4	18
+6	8
+3	2
+1	12
+6	2
+7	5
+5	27
+5	33
+6	27
+3	10
+5	13
+6	14
+3	6
+4	20
+2	34
+5	16
+7	29
+2	32
+4	31
+3	20
+1	33
+3	13
+6	3
+3	34
+5	4
+3	18
+1	13
+1	69
+3	69
+1	70
+2	70
+1	72
+4	72
+7	74
+5	74
+7	75
+7	91
+4	91
+7	95
+3	95
+6	96
+5	97
+6	108
+3	108
+\.
 
 
 --
--- TOC entry 3878 (class 0 OID 16574)
--- Dependencies: 215
--- Data for Name: class_time; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: groups; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.class_time (name, "time", id) VALUES ('calculus', '13:00, M-W-F', 1);
-INSERT INTO public.class_time (name, "time", id) VALUES ('chemistry', '9:00, M-W-F', 2);
-INSERT INTO public.class_time (name, "time", id) VALUES ('geometry', '11:30, M-W-F', 3);
-INSERT INTO public.class_time (name, "time", id) VALUES ('informatics', '10:00 M-W-F', 4);
-INSERT INTO public.class_time (name, "time", id) VALUES ('kazakh literature', '15:30, T-R', 5);
-INSERT INTO public.class_time (name, "time", id) VALUES ('physics', '9:00, T-R', 6);
-INSERT INTO public.class_time (name, "time", id) VALUES ('biology', '12:30, T-R', 7);
+COPY public.groups (id, name) FROM stdin;
+1	x
+2	y
+3	z
+\.
 
 
 --
--- TOC entry 3882 (class 0 OID 16643)
--- Dependencies: 219
--- Data for Name: groups; Type: TABLE DATA; Schema: public; Owner: -
+-- Data for Name: groups_students; Type: TABLE DATA; Schema: public; Owner: postgres
 --
 
-INSERT INTO public.groups (id, name) VALUES (1, 'x');
-INSERT INTO public.groups (id, name) VALUES (2, 'y');
-INSERT INTO public.groups (id, name) VALUES (3, 'z');
-
-
---
--- TOC entry 3883 (class 0 OID 16652)
--- Dependencies: 220
--- Data for Name: groups_students; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (1, 1);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (1, 2);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (1, 3);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (3, 4);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 5);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 6);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 7);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (3, 8);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (3, 9);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 10);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (1, 11);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (3, 12);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 13);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (1, 14);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (1, 15);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (3, 16);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (3, 17);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (1, 18);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (1, 19);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 20);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 21);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 22);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 23);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (1, 24);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (3, 25);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 26);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (3, 27);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (1, 28);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (1, 29);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 30);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (1, 31);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 32);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (3, 33);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 34);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 35);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 36);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (3, 37);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (1, 38);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (1, 39);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 40);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 69);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (3, 70);
-INSERT INTO public.groups_students (id_groups, id_students) VALUES (2, 72);
-
-
---
--- TOC entry 3877 (class 0 OID 16433)
--- Dependencies: 204
--- Data for Name: students; Type: TABLE DATA; Schema: public; Owner: -
---
-
-INSERT INTO public.students (id, name, username) VALUES (1, 'Marat N', 'gstrangeways0');
-INSERT INTO public.students (id, name, username) VALUES (2, 'Ikarat T', 'abridat1');
-INSERT INTO public.students (id, name, username) VALUES (3, 'Keken', 'astone2');
-INSERT INTO public.students (id, name, username) VALUES (4, 'Duran', 'sallen3');
-INSERT INTO public.students (id, name, username) VALUES (5, 'Kashiwa', 'jfishpool4');
-INSERT INTO public.students (id, name, username) VALUES (6, 'Tokoro', 'gcaslett5');
-INSERT INTO public.students (id, name, username) VALUES (7, 'Fergus Swinn', 'mphilip6');
-INSERT INTO public.students (id, name, username) VALUES (8, 'Lainey Swafford', 'asitch7');
-INSERT INTO public.students (id, name, username) VALUES (9, 'Letti Kimpton', 'tmcsharry8');
-INSERT INTO public.students (id, name, username) VALUES (10, 'Stanton Poel', 'mmacgilmartin9');
-INSERT INTO public.students (id, name, username) VALUES (11, 'Rollin Davidsohn', 'frawstrona');
-INSERT INTO public.students (id, name, username) VALUES (12, 'Estell Parsall', 'bexpositob');
-INSERT INTO public.students (id, name, username) VALUES (13, 'Boyd Counihan', 'dshevellc');
-INSERT INTO public.students (id, name, username) VALUES (14, 'Jannel Shearston', 'tmackelworthd');
-INSERT INTO public.students (id, name, username) VALUES (15, 'Werner Trayford', 'msamplese');
-INSERT INTO public.students (id, name, username) VALUES (16, 'Sonny Chrismas', 'tchellenhamf');
-INSERT INTO public.students (id, name, username) VALUES (17, 'Angelle Jecks', 'dmccagueg');
-INSERT INTO public.students (id, name, username) VALUES (18, 'Ely Wethers', 'tcritophh');
-INSERT INTO public.students (id, name, username) VALUES (19, 'Raymund Menear', 'lskiplornei');
-INSERT INTO public.students (id, name, username) VALUES (20, 'Roxi McIlmurray', 'candrassyj');
-INSERT INTO public.students (id, name, username) VALUES (21, 'Dusty Randell', 'ktumilityk');
-INSERT INTO public.students (id, name, username) VALUES (22, 'Kincaid Gierek', 'kmoppettl');
-INSERT INTO public.students (id, name, username) VALUES (23, 'Abelard Bursnall', 'cduffetm');
-INSERT INTO public.students (id, name, username) VALUES (24, 'Charil Flahy', 'cchampkinn');
-INSERT INTO public.students (id, name, username) VALUES (25, 'Osborne Thoma', 'amckuneo');
-INSERT INTO public.students (id, name, username) VALUES (26, 'Ekaterina Dukesbury', 'ofullep');
-INSERT INTO public.students (id, name, username) VALUES (27, 'Clary Chifney', 'mwatersonq');
-INSERT INTO public.students (id, name, username) VALUES (28, 'Roxi Shenton', 'sgardnerr');
-INSERT INTO public.students (id, name, username) VALUES (29, 'Alexander Corkitt', 'lpalisers');
-INSERT INTO public.students (id, name, username) VALUES (30, 'Amandy Lysaght', 'bmconiet');
-INSERT INTO public.students (id, name, username) VALUES (31, 'Hoyt Von Helmholtz', 'fmccrainoru');
-INSERT INTO public.students (id, name, username) VALUES (32, 'Sergio Slide', 'lpowersv');
-INSERT INTO public.students (id, name, username) VALUES (33, 'Pippa Coulthard', 'ngristockw');
-INSERT INTO public.students (id, name, username) VALUES (34, 'Ali Kopecka', 'bmacmaykinx');
-INSERT INTO public.students (id, name, username) VALUES (35, 'Carlynne Foxton', 'kpadlyy');
-INSERT INTO public.students (id, name, username) VALUES (36, 'Lorelle Rosenfield', 'flichfieldz');
-INSERT INTO public.students (id, name, username) VALUES (37, 'shiroi nami', 'shironami0');
-INSERT INTO public.students (id, name, username) VALUES (38, 'kokorono tokoro', 'koratora2');
-INSERT INTO public.students (id, name, username) VALUES (43, 'l k', 'kirakira');
-INSERT INTO public.students (id, name, username) VALUES (45, 'koch moch', 'kochmoch');
-INSERT INTO public.students (id, name, username) VALUES (69, 'akira ore', 'kamakira');
-INSERT INTO public.students (id, name, username) VALUES (70, 'yagami light', 'kirawakireta');
-INSERT INTO public.students (id, name, username) VALUES (72, 'kazuya kirito', 'topasuna');
+COPY public.groups_students (id_groups, id_students) FROM stdin;
+1	1
+1	2
+1	3
+3	4
+2	5
+2	6
+2	7
+3	8
+3	9
+2	10
+1	11
+3	12
+2	13
+1	14
+1	15
+3	16
+3	17
+1	18
+1	19
+2	20
+2	21
+2	22
+2	23
+1	24
+3	25
+2	26
+3	27
+1	28
+1	29
+2	30
+1	31
+2	32
+3	33
+2	34
+2	35
+2	36
+3	37
+1	38
+1	39
+2	40
+2	69
+3	70
+2	72
+3	74
+1	75
+1	85
+2	91
+1	95
+3	96
+2	97
+1	98
+2	100
+3	103
+1	104
+1	106
+1	107
+1	108
+3	111
+3	118
+3	119
+3	120
+1	128
+1	129
+2	130
+\.
 
 
 --
--- TOC entry 3894 (class 0 OID 0)
--- Dependencies: 216
--- Name: class_time_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: class_time_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.class_time_id_seq', 7, true);
 
 
 --
--- TOC entry 3895 (class 0 OID 0)
--- Dependencies: 218
--- Name: groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: groups_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
 SELECT pg_catalog.setval('public.groups_id_seq', 3, true);
 
 
 --
--- TOC entry 3896 (class 0 OID 0)
--- Dependencies: 203
--- Name: students_id_seq; Type: SEQUENCE SET; Schema: public; Owner: -
+-- Name: students_id_seq; Type: SEQUENCE SET; Schema: public; Owner: postgres
 --
 
-SELECT pg_catalog.setval('public.students_id_seq', 73, true);
+SELECT pg_catalog.setval('public.students_id_seq', 130, true);
 
-
---
--- TOC entry 3743 (class 2606 OID 16627)
--- Name: class_time class_time_pk; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.class_time
-    ADD CONSTRAINT class_time_pk PRIMARY KEY (id);
-
-
---
--- TOC entry 3745 (class 2606 OID 16651)
--- Name: groups groups_pk; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.groups
-    ADD CONSTRAINT groups_pk PRIMARY KEY (id);
-
-
---
--- TOC entry 3740 (class 2606 OID 16441)
--- Name: students students_pkey; Type: CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.students
-    ADD CONSTRAINT students_pkey PRIMARY KEY (id);
-
-
---
--- TOC entry 3741 (class 1259 OID 16600)
--- Name: students_username_uindex; Type: INDEX; Schema: public; Owner: -
---
-
-CREATE UNIQUE INDEX students_username_uindex ON public.students USING btree (username);
-
-
---
--- TOC entry 3746 (class 2606 OID 16631)
--- Name: class_participants class_participants_class_time_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.class_participants
-    ADD CONSTRAINT class_participants_class_time_id_fk FOREIGN KEY (id_class) REFERENCES public.class_time(id) ON DELETE CASCADE;
-
-
---
--- TOC entry 3747 (class 2606 OID 16636)
--- Name: class_participants class_participants_students_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.class_participants
-    ADD CONSTRAINT class_participants_students_id_fk FOREIGN KEY (id_students) REFERENCES public.students(id) ON DELETE CASCADE;
-
-
---
--- TOC entry 3748 (class 2606 OID 16655)
--- Name: groups_students groups_students_groups_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.groups_students
-    ADD CONSTRAINT groups_students_groups_id_fk FOREIGN KEY (id_groups) REFERENCES public.groups(id) ON DELETE CASCADE;
-
-
---
--- TOC entry 3749 (class 2606 OID 16660)
--- Name: groups_students groups_students_students_id_fk; Type: FK CONSTRAINT; Schema: public; Owner: -
---
-
-ALTER TABLE ONLY public.groups_students
-    ADD CONSTRAINT groups_students_students_id_fk FOREIGN KEY (id_groups) REFERENCES public.students(id) ON DELETE CASCADE;
-
-
--- Completed on 2021-12-04 23:25:19 +06
 
 --
 -- PostgreSQL database dump complete
 --
-
